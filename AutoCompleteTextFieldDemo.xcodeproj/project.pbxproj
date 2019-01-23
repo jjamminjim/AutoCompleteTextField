@@ -12,8 +12,6 @@
 		F1134A0B1C1BF03B00E3FB08 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1134A091C1BF03B00E3FB08 /* MainMenu.xib */; };
 		F1134A131C1BF68900E3FB08 /* AutoCompleteTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1134A121C1BF68900E3FB08 /* AutoCompleteTextField.swift */; };
 		F131DAB61D45AD0B0022B2C0 /* station_name.js in Resources */ = {isa = PBXBuildFile; fileRef = F131DAB51D45AD0B0022B2C0 /* station_name.js */; };
-		F1BE5B4E1DE528A700276BB1 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = F1BE5B4C1DE528A700276BB1 /* README.md */; };
-		F1BE5B4F1DE528A700276BB1 /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = F1BE5B4D1DE528A700276BB1 /* screenshot.png */; };
 		F1D77FBE1C2B80E800457996 /* StationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D77FBD1C2B80E800457996 /* StationData.swift */; };
 /* End PBXBuildFile section */
 
@@ -117,12 +115,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = fancy;
 				TargetAttributes = {
 					F1134A011C1BF03B00E3FB08 = {
 						CreatedOnToolsVersion = 7.1.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -152,7 +150,6 @@
 				F1134A081C1BF03B00E3FB08 /* Assets.xcassets in Resources */,
 				F131DAB61D45AD0B0022B2C0 /* station_name.js in Resources */,
 				F1134A0B1C1BF03B00E3FB08 /* MainMenu.xib in Resources */,
-				F1BE5B4F1DE528A700276BB1 /* screenshot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,7 +162,6 @@
 			files = (
 				F1134A061C1BF03B00E3FB08 /* AppDelegate.swift in Sources */,
 				F1D77FBE1C2B80E800457996 /* StationData.swift in Sources */,
-				F1BE5B4E1DE528A700276BB1 /* README.md in Sources */,
 				F1134A131C1BF68900E3FB08 /* AutoCompleteTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,14 +188,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -238,14 +242,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -278,7 +290,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fancymax.AutoCompleteTextFieldDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -291,7 +304,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fancymax.AutoCompleteTextFieldDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

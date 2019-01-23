@@ -25,13 +25,13 @@ class AutoCompleteTableRowView:NSTableRowView{
         }
     }
     
-    override var interiorBackgroundStyle:NSBackgroundStyle{
+    override var interiorBackgroundStyle:NSView.BackgroundStyle{
         get{
             if self.isSelected {
-                return NSBackgroundStyle.dark
+                return NSView.BackgroundStyle.dark
             }
             else{
-                return NSBackgroundStyle.light
+                return NSView.BackgroundStyle.light
             }
         }
     }
@@ -49,14 +49,14 @@ class AutoCompleteTextField:NSTextField{
     var matches:[String]?
     
     override func awakeFromNib() {
-        let column1 = NSTableColumn(identifier: "text")
+        let column1 = NSTableColumn(identifier: convertToNSUserInterfaceItemIdentifier("text"))
         column1.isEditable = false
         column1.width = popOverWidth - 2 * popOverPadding
         
         let tableView = NSTableView(frame: NSZeroRect)
-        tableView.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.regular
+        tableView.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.regular
         tableView.backgroundColor = NSColor.clear
-        tableView.rowSizeStyle = NSTableViewRowSizeStyle.small
+        tableView.rowSizeStyle = NSTableView.RowSizeStyle.small
         tableView.intercellSpacing = NSMakeSize(10.0, 0.0)
         tableView.headerView = nil
         tableView.refusesFirstResponder = true
@@ -80,7 +80,7 @@ class AutoCompleteTextField:NSTextField{
         contentViewController.view = contentView
         
         self.autoCompletePopover = NSPopover()
-        self.autoCompletePopover?.appearance = NSAppearance(named: NSAppearanceNameVibrantLight)
+        self.autoCompletePopover?.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
         self.autoCompletePopover?.animates = false
         self.autoCompletePopover?.contentViewController = contentViewController
         self.autoCompletePopover?.delegate = self
@@ -133,7 +133,7 @@ class AutoCompleteTextField:NSTextField{
         self.complete(self)
     }
     
-    func insert(_ sender:AnyObject){
+    @objc func insert(_ sender:AnyObject){
         let selectedRow = self.autoCompleteTableView!.selectedRow
         let matchCount = self.matches!.count
         if selectedRow >= 0 && selectedRow < matchCount{
@@ -146,7 +146,7 @@ class AutoCompleteTextField:NSTextField{
     }
     
     override func complete(_ sender: Any?) {
-        let lengthOfWord = self.stringValue.characters.count
+        let lengthOfWord = self.stringValue.count
         let subStringRange = NSMakeRange(0, lengthOfWord)
         
         //This happens when we just started a new word or if we have already typed the entire word
@@ -203,7 +203,7 @@ extension AutoCompleteTextField:NSTableViewDelegate{
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        var cellView = tableView.make(withIdentifier: "MyView", owner: self) as? NSTableCellView
+        var cellView = tableView.makeView(withIdentifier: convertToNSUserInterfaceItemIdentifier("MyView"), owner: self) as? NSTableCellView
         if cellView == nil{
             cellView = NSTableCellView(frame: NSZeroRect)
             let textField = NSTextField(frame: NSZeroRect)
@@ -213,10 +213,10 @@ extension AutoCompleteTextField:NSTableViewDelegate{
             textField.isSelectable = false
             cellView!.addSubview(textField)
             cellView!.textField = textField
-            cellView!.identifier = "MyView"
+            cellView!.identifier = convertToOptionalNSUserInterfaceItemIdentifier("MyView")
         }
-        let attrs = [NSForegroundColorAttributeName:NSColor.black,NSFontAttributeName:NSFont.systemFont(ofSize: 13)]
-        let mutableAttriStr = NSMutableAttributedString(string: self.matches![row], attributes: attrs)
+        let attrs = [convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor):NSColor.black,convertFromNSAttributedStringKey(NSAttributedString.Key.font):NSFont.systemFont(ofSize: 13)]
+        let mutableAttriStr = NSMutableAttributedString(string: self.matches![row], attributes: convertToOptionalNSAttributedStringKeyDictionary(attrs))
         cellView!.textField!.attributedStringValue = mutableAttriStr
         
         return cellView
@@ -231,4 +231,26 @@ extension AutoCompleteTextField:NSTableViewDataSource{
         }
         return self.matches!.count
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSUserInterfaceItemIdentifier(_ input: String) -> NSUserInterfaceItemIdentifier {
+	return NSUserInterfaceItemIdentifier(rawValue: input)
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSUserInterfaceItemIdentifier(_ input: String?) -> NSUserInterfaceItemIdentifier? {
+	guard let input = input else { return nil }
+	return NSUserInterfaceItemIdentifier(rawValue: input)
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

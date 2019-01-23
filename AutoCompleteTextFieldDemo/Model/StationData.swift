@@ -34,7 +34,7 @@ class Regex {
     
     func getMatches(_ input: String) -> [[String]]? {
         var res = [[String]]()
-        let myRange = NSMakeRange(0, input.characters.count)
+        let myRange = NSMakeRange(0, input.count)
         if let matches = self.internalExpression?.matches(in: input, options: [], range:myRange)
         {
             for match in matches
@@ -42,7 +42,7 @@ class Regex {
                 var groupMatch = [String]()
                 for i in 1..<match.numberOfRanges
                 {
-                    let rangeText = (input as NSString).substring(with: match.rangeAt(i))
+                    let rangeText = (input as NSString).substring(with: match.range(at: i))
                     groupMatch.append(rangeText)
                 }
                 res.append(groupMatch)
